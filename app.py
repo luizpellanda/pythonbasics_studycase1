@@ -1,17 +1,29 @@
 import os
 from py_compile import main
 
+restaurants = []
+
 # Para referencia - fsymbols
 def  show_program_name():
     print('''
           Sabor Express 
         ''')
-    
+
+# Validations
 def invalid_option():
        print('Invalid option. Please select a valid option.')
        input('Press Enter to go back to main menu...')
        main()
 
+# Restaurant management functions
+def register_restaurant(): 
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('--- New Restaurant Registration ---')
+    name = input('Enter the restaurant name: ')
+    restaurants.append(name)
+    print(f'Restaurant "{name}" registered successfully!')
+    input('Press Enter to go back to main menu...')
+    main()
 
 def show_menu():
     print("1. Register Restaurant")
@@ -29,11 +41,11 @@ def handle_user_selection():
 
         match chosen_option:
             case 1:
-                print('You selected option 1 - Register Restaurant')
+                register_restaurant()
             case 2:
-                print('You selected option 2 - List Restaurants')
+                list_restaurants()
             case 3:
-                print('You selected option 3 - Activate Restaurant')
+                activate_restaurant()
             case 4:
                 end_app()
             case _:
