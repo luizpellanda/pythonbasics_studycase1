@@ -8,22 +8,43 @@ def  show_program_name():
     print('''
           Sabor Express 
         ''')
+    
+# Return Function
+def return_to_menu():
+    input('\nPress Enter to go back to main menu...')
+    main()
+
+# Clear and Print Function
+def clear_and_print(message):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(message)
 
 # Validations
 def invalid_option():
        print('Invalid option. Please select a valid option.')
-       input('Press Enter to go back to main menu...')
-       main()
+       return_to_menu()
 
 # Restaurant management functions
+# Restaurant registration
 def register_restaurant(): 
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print('--- New Restaurant Registration ---')
+    clear_and_print('--- New Restaurant Registration ---')
     name = input('Enter the restaurant name: ')
     restaurants.append(name)
     print(f'Restaurant "{name}" registered successfully!')
-    input('Press Enter to go back to main menu...')
-    main()
+    return_to_menu()
+    
+
+# List Restaurants
+def list_restaurants():
+    clear_and_print('--- Restaurants List ---\n')
+    for restaurant in restaurants:
+        print(f'- {restaurant}')
+    return_to_menu()
+
+# Activate Restaurants
+def activate_restaurants():
+    print('In development')
+    
 
 def show_menu():
     print("1. Register Restaurant")
@@ -32,8 +53,7 @@ def show_menu():
     print('4. Exit\n')
 
 def end_app():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print('Exiting the program. Goodbye!')
+    clear_and_print('Exiting the program. Goodbye!')
 
 def handle_user_selection():
     try:
